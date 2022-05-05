@@ -1,0 +1,172 @@
+public class Exercise11_02 {
+
+	public static void main(String[] args) {
+		Person person = new Person();
+		person.setName("Garry Barryman");
+		Student student = new Student(Student.SENIOR);
+		student.setName("Jingle PB&J");
+		Employee employee = new Employee("Delray Beach,FL", 45_750.00, new MyDate());
+		employee.setName("Sarah Stodenbyer");
+		Faculty faculty = new Faculty(new double[]{9.0, 5.0}, 5);
+		faculty.setName("Milly Millyman");
+		Staff staff = new Staff("Boston,MA", 750_000.00, new MyDate(), "CEO");
+		staff.setName("Madonna Firehat");
+
+		System.out.println(person.toString());
+		System.out.println(student.toString());
+		System.out.println(employee.toString());
+		System.out.println(faculty.toString());
+		System.out.println(staff.toString());
+	}
+}
+
+public class Faculty extends Employee {
+
+    private double[] officeHours;
+    private int rank;
+
+    public int getRank() {
+        return rank;
+    }
+
+    public Faculty(double[] officeHours, int rank) {
+        super("Philadelphia,PA", 90_000.00, new MyDate());
+        this.officeHours = officeHours;
+        this.rank = rank;
+    }
+
+
+    public Faculty setRank(int rank) {
+        this.rank = rank;
+        return this;
+    }
+
+    public double[] getOfficeHours() {
+        return officeHours;
+    }
+
+    public Faculty setOfficeHours(double[] officeHours) {
+        this.officeHours = officeHours;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Faculty.class:{ " +
+                "Name = " + this.getName() +
+                " }";
+    }
+
+}
+public class Person {
+
+    private String name;
+    private String address;
+    private String phoneNumber;
+    private String emailAddress;
+
+    public Person() {}
+
+    public Person(String name, String address, String phoneNumber, String emailAddress) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Person setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+
+    public Person setAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public Person setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        return this;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public Person setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Person.class: { " +
+                "Name= " + name +
+                " }";
+    }
+
+
+}
+public class Staff extends Employee {
+
+    private String title;
+
+    public Staff(String office, double salary, MyDate dateHired, String title) {
+        super(office, salary, dateHired);
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Staff setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Staff.class: { " +
+                "Name= " + getName()  +
+                '}';
+    }
+}
+public class Student extends Person {
+    protected final String STATUS;
+
+    public static final String FRESHMAN = "freshman";
+    public static final String SOPHOMORE = "sophomore";
+    public static final String JUNIOR = "junior";
+    public static final String SENIOR = "senior";
+
+    public Student(String STATUS) {
+        this.STATUS = STATUS;
+    }
+
+    public Student(String name, String address, String phoneNumber, String emailAddress, String STATUS) {
+        super(name, address, phoneNumber, emailAddress);
+        this.STATUS = STATUS;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Student.class: { " +
+                "Name= " + this.getName() +
+                '}';
+    }
+}
